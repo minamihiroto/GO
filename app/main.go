@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	name := "山田"
-	fmt.Printf("%s\n%sさん(%d)","hello",name,35)
+	for i := 1; i <=4; i++{ // varによる定義は使えない
+		fmt.Println(i)
+	}
 }
