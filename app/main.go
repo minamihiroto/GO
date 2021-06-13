@@ -1,9 +1,10 @@
 package main
 
 import "fmt"
+import "math/rand"
+import "time"
 
 func main() {
-	for i := 1; i <=4; i++{ // varによる定義は使えない
-		fmt.Println(i)
-	}
+	rand.Seed(time.Now().Unix())// 完全な乱数にするために必要
+	fmt.Println(rand.Intn(10))// 上記がなければ実行する度同じ乱数
 }
