@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func main() {//main関数が先に実行されるので関数の書く順番は関係ない
-	totalAsk := ask("田中")
-	fmt.Printf(totalAsk)
+func main() {
+	a, b := swap("hello", "world")
+	fmt.Println(a, b)
 }
 
-func ask(question string)string{
-	return "こんにちは、"+question+"さん\n"
+func swap(x, y string) (string, string) {//戻り値の個数分のデータ型を記述
+	return y, x
 }
