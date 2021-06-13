@@ -2,12 +2,13 @@ package main
 
 import "fmt"
 
-func main() {
-	fmt.Println(split(17))
-}
+const Pi = 3.14
 
-func split(sum int) (x, y int) {//可読性が低いため、短い関数のみで使うべき
-	x = sum - 5
-	y = sum - x
-	return//データ型定義部分にて何を返すかを書いてるからreturnだけでいい
+func main() {
+	const World = "世界"//定数は、文字(character)、文字列(string)、boolean、数値(numeric)のみで使える
+	fmt.Println("Hello", World)
+	fmt.Println("Happy", Pi, "Day")
+
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
 }
