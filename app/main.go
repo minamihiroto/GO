@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	a, b := swap("hello", "world")
-	fmt.Println(a, b)
+	fmt.Println(split(17))
 }
 
-func swap(x, y string) (string, string) {//戻り値の個数分のデータ型を記述
-	return y, x
+func split(sum int) (x, y int) {//可読性が低いため、短い関数のみで使うべき
+	x = sum - 5
+	y = sum - x
+	return//データ型定義部分にて何を返すかを書いてるからreturnだけでいい
 }
