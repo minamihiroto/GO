@@ -5,14 +5,16 @@ import (
 )
 
 func main() {
-	name := "MINAMI"
+	score := 0
+	plusTen(score)//scoreと値は同じ0を関数に渡しているが、コピーなのでポインタは違うもの
 
-	fmt.Println(name)
-	changeName(&name)//ポインタを渡してる
-	fmt.Println(name)
-
+	fmt.Println(score)//0が表示される
+	fmt.Println(&score)//0のポインタ
 }
 
-func changeName(namePtr *string) {//*をつけることで"ポインタが示す変数の値"と言う意味になるので、nameのポインタでなく値が入る型設定ができる（ポインタ型に指定）
-	*namePtr = "HIROTO"//namePtrはポインタ型として型設定されてるため、ポインタ型変数として使える
+func plusTen(score int) {
+	score += 10//0に10をたす
+
+	fmt.Println(score)//10が表示される
+	fmt.Println(&score)//10のポインタ
 }
