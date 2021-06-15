@@ -5,16 +5,16 @@ import (
 )
 
 func main() {
-	score := 0
-	plusTen(score)//scoreと値は同じ0を関数に渡しているが、コピーなのでポインタは違うもの
+	a := 10
+	b := 10
 
-	fmt.Println(score)//0が表示される
-	fmt.Println(&score)//0のポインタ
+	calculate(a,&b)//この処理でmain関数のaは10,bは11になってる
+
+	fmt.Println("引数に整数を指定した場合：", a)
+	fmt.Println("引数にポインタを指定した場合：", b)
 }
 
-func plusTen(score int) {
-	score += 10//0に10をたす
-
-	fmt.Println(score)//10が表示される
-	fmt.Println(&score)//10のポインタ
+func calculate(a int, b *int) {
+	a += 1//あくまでここで定義されているaに更新が走ってるだけでmain関数のaとは関係ない
+	*b += 1//main関数のbのポインタを参照してるポインタ型変数を更新してる
 }
