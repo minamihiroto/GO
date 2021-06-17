@@ -4,20 +4,13 @@ import (
 	"fmt"
 )
 
-type Result struct {//レシーバ
-	X, Y int
-}
+type Result int//レシーバとしてtypeのみを定義、Resultというint型ができた（ただの別名）
 
-func  Sum(num Result) int {//これはメソッドではなく、レシーバを引数に取ったただの関数
-	return num.X + num.Y
+func (num Result) Sum() int {//func後ろにレシーバを取るため、これはメソッド、numはResult型
+	return  int(num)
 }
 
 func main() {
-	I := Result{3, 4}//Iにレシーバを代入
-	// fmt.Println(I.Sum())//この呼び出し方はできない
-	fmt.Println(Sum(I))//関数を呼び出し、引数にレシーバを渡してる
-
-	fmt.Println(I.X)
-	fmt.Println(I.Y)
-	fmt.Println(I.X + I.Y)//メソッドを呼び出した時と結果は同じ
+	I := Result(1)//Iにレシーバを代入
+	fmt.Println(I.Sum())
 }
