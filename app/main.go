@@ -12,8 +12,8 @@ func (num Result) Sum() int {//メソッド
 	return  num.X + num.Y
 }
 
-func (n *Result) Scale(f int) {//メソッドかつポインタ
-	n.Y = n.Y * f//2 * 3ということ
+func (n *Result) Scale(f int) {//メソッドかつポインタを指定している
+	n.Y = n.Y * f//2 * 3ということ、ここの2はIの変数定義の際に入っているがこれはポインタを指定してるので実現できてる
 }
 
 func main() {
