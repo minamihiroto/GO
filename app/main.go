@@ -2,19 +2,19 @@ package main
 
 import "fmt"
 
-func do(i interface{}) {//インターフェースをiに定義
-	switch v := i.(type) {//i（型）をvに代入、型判定のswitch文
-	case int:
-		fmt.Printf("このvの型はint,%vの倍は%v\n", v, v*2)
-	case string:
-		fmt.Printf("このvの型はstring,%qの文字数は%v\n", v, len(v))
-	default:
-		fmt.Printf("このvの型は%T\n", v)
-	}
+type Person struct {
+	Name string
+	Age  int
+}
+
+func (p Person) String() string {//String() string、これもインターフェース(Stringer)
+	//Stringerインターフェースはfmtパッケージに定義されている
+	//fmtパッケージ以外にも変数を文字列で出力するためのインタフェースがある
+	return fmt.Sprintf("%v (%v 歳)", p.Name, p.Age)
 }
 
 func main() {
-	do(21)
-	do("hello")
-	do(true)
+	a := Person{"山田太郎", 42}
+	z := Person{"田中エルフ", 9001}
+	fmt.Println(a, z)
 }
