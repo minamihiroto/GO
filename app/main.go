@@ -1,29 +1,20 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type Result struct{//構造体を持つレシーバ
-	X, Y int
+type I interface {//インターフェースは中に関数が持てる、typeなので型
+	M()
 }
 
-func (num Result) Sum() int {//メソッド
-	return  num.X + num.Y
+type T struct {//ストラクトは中に変数が持てる、typeなので型
+	S string
 }
 
-func (n *Result) Scale(f int) {//メソッドかつポインタを指定している
-	n.Y = n.Y * f//2 * 3ということ、ここの2はIの変数定義の際に入っているがこれはポインタを指定してるので実現できてる
+func (t T) M() {
+	fmt.Println(t.S)
 }
 
 func main() {
-	I := Result{1,2}//Iにレシーバを代入
-	fmt.Println(I.Y)//2
-	fmt.Println(I.X)//1
-	fmt.Println(I.Sum())//1 + 2
-
-	I.Scale(3)//Iの引き数（今回はY）を直接更新、3をscaleに渡してIにあるYを6に作り変えている
-	fmt.Println(I.Y)//6
-	fmt.Println(I.X)//1
-	fmt.Println(I.Sum())//1 + 6
+	var i I = T{"hello"}//T型のhelloがiに入っていて、iはI型
+	i.M()//iはインターフェースのI型なので、M関数が使える
 }
