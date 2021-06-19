@@ -3,33 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	var i I
-	var t *T//*は"ポインタが示す変数の値"、ここで値はnil
-	i = t//I型のiにT型のtが入っただけ
-	P(i)//<nil>, *main.T
-	i.M()//<nil>
+	var i interface{} = "hello"//空のインターフェースをiに定義、helloを代入
 
-	i = &T{"hello"}//T型のポインタをとってきてhelloをiに渡している、ポインタ先に値helloを指定
-	P(i)//&{hello}, *main.T
-	i.M()//hello
-}
+	s := i.(string)
+	fmt.Println(s)
 
-type I interface {
-	M()
-}
+	s, ok := i.(string)
+	fmt.Println(s, ok)
 
-type T struct {
-	S string
-}
+	// f = i.(float64) // panicエラー、中にあるのはstringだからアサーションが失敗したエラーが出る
+	// fmt.Println(f)
 
-func (t *T) M() {//メソッドにポインタを渡している
-	if t == nil {
-		fmt.Println("<nil>")
-		return
-	}
-	fmt.Println(t.S)
-}
+	f, ok := i.(float64)
+	fmt.Println(f, ok)//アサーションの成功失敗を第二引数で監視しているため、panicエラーが出ない
 
-func P(i I) {
-	fmt.Printf("%v, %T\n", i, i)//%vは値 == nil、%Tは型 == *main.T
 }
