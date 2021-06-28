@@ -2,13 +2,14 @@ package main
 
 import(
 	"fmt"
-	"gomodtest/animals"//moduleの名前/ディレクトリ名とする
 )
 
-func main(){
-	fmt.Println(AppName())
+var n = 100 //パッケージ変数（グローバル変数とは言わない）
+// n := 100 👈 これだとエラーが起きる
+//:= をつかった暗黙的宣言は、基本的に関数スコープ内でのみの利用が可能で、関数宣言外では利用できない
 
-	fmt.Println(animals.ElephantFeed())
-	fmt.Println(animals.MonkeyFeed())
-	fmt.Println(animals.RabbitFeed())
+func main(){
+	//関数内で定義される変数はローカル変数
+	n = n+1
+	fmt.Printf("n=%d\n",n)
 }
