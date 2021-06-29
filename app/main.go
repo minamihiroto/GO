@@ -5,24 +5,17 @@ import(
 )
 
 func main(){
-	//初期値指定
-	v := [3]int{1,2,3}//変数 := [要素数]要素の型{要素}
-	n := [5]int{}
-	var a [5]int
-	z := [5]int{2,3,4}
+	//interface{}は型名
+	var x interface{}//全ての型と互換性がある
 
-	fmt.Println(v,n,a,z)
+	fmt.Println(x)//<nil> 初期値にnilが入る
 
-	//要素数の省略
-	v1 := [...]int{1,2,3}
-	v2 := [...]int{1,2,3,4,5}
-	v3 := [...]int{}
+	x = 3.14
+	fmt.Println(x)
+	x = "文字列"
+	fmt.Println(x)
+	x = 1
+	fmt.Println(x)
 
-	fmt.Println(v1,v2,v3)
-
-	//代入
-	v1[0] = 4
-	v2 = [...]int{5,4,3,2,1}
-
-	fmt.Println(v1,v2)
+	//z := x+1 //interface{}はあくまで全ての型の値を汎用的に表す手段なだけであり、演算の対象としては使えない
 }
