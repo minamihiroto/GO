@@ -4,18 +4,18 @@ import(
 	"fmt"
 )
 
+
+func div(a,b int)(int,int){
+	q := a+b
+	r := a-b
+	return q,r
+}
+
 func main(){
-	//interface{}は型名
-	var x interface{}//全ての型と互換性がある
+	Q,R := div(2,1)	//割り振り代入
+	fmt.Println(Q,R)
 
-	fmt.Println(x)//<nil> 初期値にnilが入る
+	q1,_ := div(3,4)//戻り値の破棄
+	fmt.Println(q1)
 
-	x = 3.14
-	fmt.Println(x)
-	x = "文字列"
-	fmt.Println(x)
-	x = 1
-	fmt.Println(x)
-
-	//z := x+1 //interface{}はあくまで全ての型の値を汎用的に表す手段なだけであり、演算の対象としては使えない
 }
