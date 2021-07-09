@@ -4,19 +4,14 @@ import(
 	"fmt"
 )
 
-func sub(){
-	for{//無限ループ
-		fmt.Println(1)
-  }
+func init(){//main関数より先に実行される
+	fmt.Println("init()")
 }
 
-func sub2(){
-	for{//無限ループ
-		fmt.Println(2)
-  }
+func init(){//同じファイルに何回でも定義できる 👉 普通はしない
+	fmt.Println("aaa")
 }
 
 func main() {
-	go sub() //goで関数を実行すると、並列処理が行われる
-	sub2()
+	fmt.Println("main()")
 }
